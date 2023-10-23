@@ -22,4 +22,16 @@ jobs:
     - name: Print Current Directory
       run: pwd
 
-    
+    - name: Navigate to Project Directory
+      run: cd spring-petclinic-for-azure-app-main
+
+    - name: Build with Maven
+      run: mvn -f spring-petclinic-for-azure-app-main/pom.xml clean package -DskipTests
+
+    - name: Deploy to Azure
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: java-web-app-dev
+        slot-name: production  # Optional: Use a deployment slot
+        publish-profile: ${{ secrets.AZURE_APP_SERVICE_PUBLISH_PROFILE }}
+        package: path/to/project-directory/target/*.jar
