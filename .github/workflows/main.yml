@@ -34,4 +34,4 @@ jobs:
         app-name: java-web-app-dev
         slot-name: production  # Optional: Use a deployment slot
         publish-profile: ${{ secrets.AZURE_APP_SERVICE_PUBLISH_PROFILE }}
-        package: path/to/project-directory/target/*.jar
+        package: spring-petclinic-for-azure-app-main/target/*.jar
